@@ -1,0 +1,268 @@
+/* Base
+================================================== */
+/*
+    Consistency fixes
+    adapted from http://necolas.github.com/normalize.css/
+*/
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, audio, canvas, video {
+  display: block; }
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+body {
+  min-height: 100%;
+  font-size: 100%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+b, strong {
+  font-weight: bold; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a img, img {
+  -ms-interpolation-mode: bicubic;
+  border: 0; }
+
+input, textarea, button, select {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline; }
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button; }
+
+input[type="checkbox"], input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+
+textarea {
+  overflow: auto; }
+
+/*
+    These are easy to forget
+*/
+::selection {
+  background: red;
+  color: white; }
+
+::-moz-selection {
+  background: red;
+  color: white; }
+
+img::selection {
+  background: transparent; }
+
+img::-moz-selection {
+  background: transparent; }
+
+body {
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0.62); }
+
+@font-face {
+  font-family: 'casper_bold_italicregular';
+  src: url("casper_bold_italic-webfont.eot");
+  src: url("casper_bold_italic-webfont.eot?#iefix") format("embedded-opentype"), url("casper_bold_italic-webfont.woff") format("woff"), url("casper_bold_italic-webfont.ttf") format("truetype"), url("casper_bold_italic-webfont.svg#casper_bold_italicregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'casperregular';
+  src: url("casper-webfont.eot");
+  src: url("casper-webfont.eot?#iefix") format("embedded-opentype"), url("casper-webfont.woff") format("woff"), url("casper-webfont.ttf") format("truetype"), url("casper-webfont.svg#casperregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 16px/1.5 Helvetica, Arial, sans-serif;
+  color: #3b3b3b;
+  background: #cbcbcb url("../images/fabric_plaid.png"); }
+
+/* Layout
+================================================== */
+body {
+  width: 100%;
+  *zoom: 1; }
+body:before, body:after {
+  content: "";
+  display: table; }
+body:after {
+  clear: both; }
+
+header {
+  width: 100%;
+  height: 100px;
+  position: relative; }
+header h1 {
+  left: 50px;
+  position: relative; }
+header .counter {
+  width: 50px;
+  height: 50px;
+  right: 50px;
+  position: absolute;
+  top: 50%;
+  margin-top: -25px; }
+
+.content {
+  height: 100%;
+  display: block;
+  width: 360px;
+  margin: 0 -10px;
+  *zoom: 1;
+  margin: 30px auto; }
+.content:before, .content:after {
+  content: "";
+  display: table; }
+.content:after {
+  clear: both; }
+
+.todo {
+  display: block;
+  width: 360px;
+  margin: 0 -10px;
+  *zoom: 1; }
+.todo:before, .todo:after {
+  content: "";
+  display: table; }
+.todo:after {
+  clear: both; }
+
+.todo li {
+  position: relative;
+  width: 100%; }
+.todo li:hover .action {
+  left: 300px; }
+
+.title {
+  width: 277px; }
+
+.action {
+  position: absolute;
+  width: 60px;
+  height: 100%;
+  top: 0;
+  left: 240px;
+  z-index: -1; }
+
+footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; }
+
+/* States
+================================================== */
+/* Themes
+================================================== */
+h1 {
+  font-size: 3em; }
+
+h2 {
+  font-size: 1.5em; }
+
+.content > h2 {
+  width: 300px;
+  text-align: center; }
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.75em; }
+
+header {
+  background-color: white;
+  border-bottom: 1px solid #cccccc;
+  display: table; }
+header h1 {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: 'casper_bold_italicregular', Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5em; }
+header .counter {
+  line-height: 50px;
+  text-align: center;
+  border: 1px solid #b3b3b3;
+  border-radius: 100%;
+  font-family: 'casper_bold_italicregular', Helvetica, sans-serif;
+  font-size: 1.2em; }
+
+.todo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'casperregular', Arial, sans-serif; }
+
+.todo li {
+  cursor: pointer;
+  overflow: hidden;
+  border-bottom: 1px solid #efefef; }
+.todo li.important .title {
+  border-color: rgba(250, 105, 0, 0.7); }
+.todo li.important .action {
+  background-color: rgba(250, 105, 0, 0.7); }
+.todo li.done .title {
+  border-color: rgba(200, 200, 200, 0.7);
+  color: #a1a1a1;
+  text-decoration: line-through; }
+.todo li.done .action {
+  background-color: rgba(200, 200, 200, 0.7); }
+
+.title {
+  background-color: #FFF;
+  padding: 10px 10px;
+  border-left: 3px solid #69d2e7; }
+
+.action {
+  text-align: center;
+  font-size: 0.75em;
+  color: white;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+  background-color: #69d2e7;
+  line-height: 30px;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s; }

@@ -1,0 +1,78 @@
+/* Themes
+================================================== */
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 1.5em;
+}
+.content > h2 {
+  width: 300px;
+  text-align: center;
+}
+footer {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.75em;
+}
+header {
+  background-color: white;
+  border-bottom: 1px solid darken(white, 20%);
+  display: table;
+  h1 {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'casper_bold_italicregular', Helvetica, sans-serif;
+    @include reset;
+    font-size: 1.5em;
+  }
+  .counter {
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid darken(white, 30%);
+    border-radius: 100%;
+    font-family: 'casper_bold_italicregular', Helvetica, sans-serif;
+    font-size: 1.2em;
+  }
+}
+.todo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'casperregular', Arial, sans-serif;
+}
+  .todo li {
+    cursor: pointer;
+    overflow: hidden;
+    border-bottom: 1px solid #efefef;
+    &.important .title {
+      border-color: $important-color;
+    }
+    &.important .action {
+      background-color: $important-color;
+    }
+    &.done .title {
+      border-color: $done-color;
+      color: lighten($base-text-color, 40%);
+      text-decoration: line-through;
+    }
+    &.done .action {
+      background-color: $done-color;
+    }
+  }
+  .title {
+    background-color: #FFF;
+    padding: 10px 10px;
+    border-left: 3px solid $normal-color;
+  }
+  .action {
+    text-align: center;
+    font-size: 0.75em;
+    color: white;
+    @include single-text-shadow;
+    @include border-radius(0 5px 5px 0);
+    background-color: $normal-color;
+    line-height: 30px;
+    @include transition-property(left);
+    @include transition-duration(0.3s);
+  }
