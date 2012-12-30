@@ -1,0 +1,11 @@
+{{ if (important) { }}
+<li class="important">
+{{ } else { }}
+<li>
+{{ } }}
+  <div class="title">
+    {{= label }}
+    <div class="date">{{= date }}</div> 
+  </div>
+  <div class="action">{{= !complete ? 'done' : 'undo' }}</div> 
+</li>

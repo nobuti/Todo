@@ -1,18 +1,14 @@
 %header
   %h1 Doit
-  .counter 3
-  
-.content  
-  %h2 You can start hacking.
-  %ul.todo
-    %li 
-      .title lorem ipsum dablet va
-      .action done
-    %li.important 
-      .title lorem ipsum dablet va asjdasñ asdljas asjdlasn sakdjas asdjaslk askdjaskdsa askdjaslk sas 
-      .action done
-    %li.done 
-      .title lorem ipsum dablet va asjdasñ asdljas asjdlasn sakdjas asdjaslk askdjaskdsa askdjaslk sas 
-      .action undo
+  .counter
+  .add +
 
+.content  
+  %h2 Don't be lazy and do it!.
+  .form-holder
+    %label{:for => "task"}
+      Task
+    %input{:type => "text", :name => "task"}  
+  %ul.todo
+    
 /= render_partial 'footer'

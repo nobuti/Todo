@@ -13,23 +13,17 @@
     <header>
       <h1>Doit</h1>
       <div class='counter'>3</div>
+      <div class='add'>+</div>
     </header>
     <div class='content'>
-      <h2>You can start hacking.</h2>
-      <ul class='todo'>
-        <li>
-          <div class='title'>lorem ipsum dablet va</div>
-          <div class='action'>done</div>
-        </li>
-        <li class='important'>
-          <div class='title'>lorem ipsum dablet va asjdasñ asdljas asjdlasn sakdjas asdjaslk askdjaskdsa askdjaslk sas</div>
-          <div class='action'>done</div>
-        </li>
-        <li class='done'>
-          <div class='title'>lorem ipsum dablet va asjdasñ asdljas asjdlasn sakdjas asdjaslk askdjaskdsa askdjaslk sas</div>
-          <div class='action'>undo</div>
-        </li>
-      </ul>
+      <h2>Don't be lazy and do it!.</h2>
+      <div class='form-holder visible'>
+        <label for='task'>
+          Task
+        </label>
+        <input name='task' type='text' />
+      </div>
+      <ul class='todo'></ul>
     </div>
     <!-- = render_partial 'footer' -->
   </body>

@@ -4,7 +4,10 @@ require.config({
   paths: {
     jquery: 'components/jquery/jquery',
     underscore: 'components/lodash/lodash',
-    backbone: 'components/backbone/backbone'
+    backbone: 'components/backbone/backbone',
+    'backbone.localStorage': 'components/backbone.localStorage/backbone.localStorage-min',
+    text: 'components/requirejs-text/text',
+    moment: 'components/moment/moment'
   },
   shim: {
     underscore: {
@@ -13,9 +16,17 @@ require.config({
     backbone: {
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
+    },
+    moment: {
+      exports: 'moment'
+    },
+    'backbone.localStorage': {
+      deps: ['underscore','backbone'],
+      exports: "Backbone"
     }
   }
 })
 
-require ['underscore', 'jquery', 'backbone', 'router'], (_, $, Backbone, App) ->
-  console.log new App().init()
+require ['router'], (App) ->
+  app = new App()
+  app.init()

@@ -1,0 +1,11 @@
+<% if (task.important) { %>
+<li class="important">
+<% } else { %>
+<li>
+<% } %>
+  <div class="title">
+    <%= task.label %>
+    <div class="date"><%= formatDate(task.date) %></div> 
+  </div>
+  <div class="action"><%= !task.complete ? 'done' : 'undo' %></div> 
+</li>
