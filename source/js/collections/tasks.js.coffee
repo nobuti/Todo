@@ -1,11 +1,14 @@
 define ['backbone.localStorage', 'moment', 'models/task'], (Backbone, moment, Task)->
   class Tasks extends Backbone.Collection
-    model: Task,
-    initialize: ->
-      this.on('reset', this.applyFilter, this)
+    model: Task
+    
+    url: '/tasks'
 
-    comparator: (a, b) ->
-      return a.get('date') > b.get('date')
+    initialize: ->
+      this.on 'reset', this.applyFilter, this
+
+    comparator: (taska, taskb) ->
+      moment(taska.get('date')) < moment(taskb.get('date'))
 
     localStorage: new Backbone.LocalStorage("ToDo")
 
@@ -16,7 +19,8 @@ define ['backbone.localStorage', 'moment', 'models/task'], (Backbone, moment, Ta
         task = task.substr(1)
       this.create({
         label: task,
-        important: important
+        important: important,
+        date: new Date()
       })
 
     applyFilter: ->

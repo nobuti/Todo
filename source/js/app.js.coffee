@@ -27,6 +27,6 @@ require.config({
   }
 })
 
-require ['router'], (App) ->
+require ['mediator', 'router'], (Backbone, App) ->
   app = new App()
   app.init()

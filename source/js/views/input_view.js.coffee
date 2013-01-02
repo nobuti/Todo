@@ -1,20 +1,37 @@
 define ['backbone'], (Backbone)->
   class InputView extends Backbone.View
     initialize: (options)->
+      this.edition = false
       this.pinput = this.$el.find('input[name=task]')
-      this.mediator = options.mediator
-    events: {
+      Backbone.Mediator.on 'dblclick', this.edit, this
+      Backbone.Mediator.on 'input:show', this.show, this
+      Backbone.Mediator.on 'input:hide', this.hide, this
+
+    events: 
       'keypress input[name=task]': 'enterHandler'
-    }
+
     enterHandler: (e)->
       value = this.pinput.val()
-      if (e.keyCode == 13 and $.trim(value) != '') 
-        this.collection.newTask(value)
-        this.pinput.val('').blur()
-        this.hide()
-        this.mediator.trigger('input:hide')
+      if (this.edition)
+        if (e.keyCode == 13 and $.trim(value) == '') 
+          this.edition = false
+          this.task.destroy()
+          this.hide()
+      else
+        if (e.keyCode == 13 and $.trim(value) != '') 
+          this.collection.newTask(value)
+          Backbone.Mediator.trigger('button:reset')
+          this.hide()
+
     hide: ->
+      this.pinput.val('').blur()
       this.$el.removeClass('visible')
+
     show: ->
       this.$el.addClass('visible')
-        
+
+    edit: (task)-> 
+      this.edition = true
+      this.task = task
+      this.pinput.val(this.task.model.get('label'))
+      this.show()

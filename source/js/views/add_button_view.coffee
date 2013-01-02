@@ -1,18 +1,22 @@
 define ['backbone'], (Backbone)->
   class AddButtonView extends Backbone.View
     initialize: (options)->
-      @mediator = options.mediator
       @showing = false
+      Backbone.Mediator.on 'button:reset', this.reset, this
+      
     events: 
       'click': 'clickHandler'
+
     clickHandler: (e)->
       if !@showing
         this.$el.html('-')
-        @mediator.trigger 'input:show'
+        @showing = true
+        Backbone.Mediator.trigger 'input:show'
       else 
         this.$el.html('+')
-        @mediator.trigger 'input:hide'
-      @showing = !@showing 
+        @showing = false
+        Backbone.Mediator.trigger 'input:hide'
+      
     reset: ->
       this.$el.html('+')
       @showing = false
