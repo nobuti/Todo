@@ -1,29 +1,29 @@
 (function() {
 
-  define(['models/task', 'collections/tasks', 'views/input_view', 'underscore', 'backbone'], function(Task, Tasks, InputView, _, Backbone) {
+  define(['underscore', 'backbone', 'models/task', 'collections/tasks', 'views/input_view', 'views/list_view', 'views/add_button_view', 'views/counter_view'], function(_, Backbone, Task, Tasks, InputView, ListView, AddButtonView, CounterView) {
     var App;
     return App = (function() {
 
-      function App() {
-        _.templateSettings = {
-          evaluate: /\{\{([\s\S]+?)\}\}/g,
-          interpolate: /\{\{=([\s\S]+?)\}\}/g,
-          escape: /\{\{-([\s\S]+?)\}\}/g
-        };
-        _.extend(this, Backbone.Events);
-        this.on('input:new', this["new"]);
-      }
+      function App() {}
 
-      App.prototype.init = function(todo) {
+      App.prototype.init = function() {
+        this.todo = new Tasks();
+        this.button = new AddButtonView({
+          el: '.add'
+        });
+        this.counter = new CounterView({
+          el: '.counter',
+          collection: this.todo
+        });
+        this.list = new ListView({
+          el: 'ul.todo',
+          collection: this.todo
+        });
         this.input = new InputView({
           el: '.form-holder',
-          mediator: this
+          collection: this.todo
         });
-        return this.todo = new Tasks();
-      };
-
-      App.prototype["new"] = function(task) {
-        return console.log(task);
+        return this.todo.fetch();
       };
 
       return App;

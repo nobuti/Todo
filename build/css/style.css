@@ -187,11 +187,12 @@ header .counter, header .add {
 
 .title {
   width: 277px;
-  position: relative; }
+  position: relative;
+  z-index: 2; }
 .title .date {
   position: absolute;
-  right: 10px;
-  bottom: 5px; }
+  right: 5px;
+  bottom: 2px; }
 
 .action {
   position: absolute;
@@ -199,7 +200,7 @@ header .counter, header .add {
   height: 100%;
   top: 0;
   left: 240px;
-  z-index: -1; }
+  z-index: 1; }
 
 footer {
   display: block;

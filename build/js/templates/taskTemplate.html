@@ -1,11 +1,5 @@
-{{ if (important) { }}
-<li class="important">
-{{ } else { }}
-<li>
-{{ } }}
-  <div class="title">
-    {{= label }}
-    <div class="date">{{= date }}</div> 
-  </div>
-  <div class="action">{{= !complete ? 'done' : 'undo' }}</div> 
-</li>
+<div class="title">
+  <%= task.label %>
+  <div class="date"><%= formatDate(task.date) %></div> 
+</div>
+<div class="action"><%= !task.complete ? 'done' : 'undo' %></div> 

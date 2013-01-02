@@ -7,6 +7,8 @@ require.config({
     backbone: 'components/backbone/backbone',
     'backbone.localStorage': 'components/backbone.localStorage/backbone.localStorage-min',
     text: 'components/requirejs-text/text',
+    moment: 'components/moment/moment',
+    sinon: '../test/components/sinon/sinon',
     mocha: '../test/components/mocha/mocha',
     chai: '../test/components/chai/chai',
     specs: '../test/specs'
@@ -23,6 +25,12 @@ require.config({
       deps: ['underscore','backbone'],
       exports: "Backbone"
     },
+    moment: {
+      exports: 'moment'
+    },
+    sinon: {
+      exports: 'sinon'
+    },
     mocha: {
       exports: 'mocha'
     },
@@ -32,7 +40,7 @@ require.config({
   }
 });
 
-require(['mocha', 'chai'], function(mocha, chai) {
+require(['mocha', 'chai','sinon'], function(mocha, chai, sinon) {
 
   // Chai
   this.expect = chai.expect;

@@ -14,8 +14,7 @@
 
       Task.prototype.defaults = {
         complete: false,
-        important: false,
-        date: new Date()
+        important: false
       };
 
       Task.prototype.validate = function(attrs) {
