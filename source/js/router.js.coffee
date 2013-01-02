@@ -2,24 +2,24 @@ define ['underscore', 'backbone', 'models/task', 'collections/tasks', 'views/inp
   class App
       
     init: ->
-      @todo = new Tasks()
+      this.todo = new Tasks()
       
-      @button = new AddButtonView({
+      this.button = new AddButtonView({
         el: '.add'
       })
 
-      @counter = new CounterView({
+      this.counter = new CounterView({
         el: '.counter'
       })
 
-      @list = new ListView({
+      this.list = new ListView({
         el: 'ul.todo',
-        collection: @todo
+        collection: this.todo
       })
 
-      @input = new InputView({
+      this.input = new InputView({
         el: '.form-holder',
-        collection: @todo
+        collection: this.todo
       })
       
-      @todo.fetch()
+      this.todo.fetch()

@@ -1,8 +1,8 @@
-define ['backbone', 'underscore', 'views/task_view', 'views/notask_view'], (Backbone, _, TaskView, NoTaskView) ->
+define ['backbone', 'views/task_view', 'views/notask_view'], (Backbone, TaskView, NoTaskView) ->
   class ListView extends Backbone.View
     
     initialize: ->
-      @views = []
+      this.views = []
       this.collection.on 'add', this.render, this
       this.collection.on 'filter', this.render, this
     
@@ -16,17 +16,17 @@ define ['backbone', 'underscore', 'views/task_view', 'views/notask_view'], (Back
     
     no_list: ->
       view = new NoTaskView()
-      @views.push view
+      this.views.push view
       this.$el.append view.render().el
 
     add: (model)->
       view = new TaskView({model: model})
-      @views.push view
+      this.views.push view
       this.$el.append view.render().el
     
     clear: ->
-      while @views.length
-        this.removeView @views.pop()
+      while this.views.length
+        this.removeView this.views.pop()
     
     removeView: (view)->
       view.clear()
