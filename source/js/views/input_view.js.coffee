@@ -13,10 +13,9 @@ define ['backbone'], (Backbone)->
     enterHandler: (e)->
       value = this.pinput.val()
       if (this.edition)
-        if (e.keyCode == 13 and $.trim(value) == '') 
-          this.edition = false
-          this.task.destroy()
-          this.hide()
+        this.task.destroy() if (e.keyCode == 13 and $.trim(value) == '') 
+        this.edition = false
+        this.hide()
       else
         if (e.keyCode == 13 and $.trim(value) != '') 
           this.collection.newTask(value)

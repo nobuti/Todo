@@ -29,10 +29,10 @@
         value = this.pinput.val();
         if (this.edition) {
           if (e.keyCode === 13 && $.trim(value) === '') {
-            this.edition = false;
             this.task.destroy();
-            return this.hide();
           }
+          this.edition = false;
+          return this.hide();
         } else {
           if (e.keyCode === 13 && $.trim(value) !== '') {
             this.collection.newTask(value);

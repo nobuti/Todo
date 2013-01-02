@@ -9,8 +9,7 @@ define ['underscore', 'backbone', 'models/task', 'collections/tasks', 'views/inp
       })
 
       @counter = new CounterView({
-        el: '.counter',
-        collection: @todo
+        el: '.counter'
       })
 
       @list = new ListView({

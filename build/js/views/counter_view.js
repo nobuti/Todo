@@ -13,15 +13,11 @@
       }
 
       CounterView.prototype.initialize = function() {
-        this.collection.on('filter', this.render, this);
-        this.collection.on('add', this.render, this);
         return Backbone.Mediator.on('update:counter', this.render, this);
       };
 
-      CounterView.prototype.render = function() {
-        return this.$el.html(this.collection.filter(function(model) {
-          return model.get('complete') === false;
-        }).length);
+      CounterView.prototype.render = function(cuantos) {
+        return this.$el.html(cuantos);
       };
 
       return CounterView;

@@ -53,7 +53,14 @@
         valor = this.model.get('complete');
         return this.model.save({
           complete: !valor
+        }, {
+          success: _.bind(this.update, this)
         });
+      };
+
+      TaskView.prototype.update = function(model, response, options) {
+        console.log("update");
+        return Backbone.Mediator.trigger('update:tasks');
       };
 
       TaskView.prototype.dblclickHandler = function() {
@@ -63,8 +70,7 @@
       TaskView.prototype.destroy = function() {
         this.undelegateEvents();
         this.model.destroy();
-        this.remove();
-        return Backbone.Mediator.trigger('update:counter');
+        return this.remove();
       };
 
       TaskView.prototype.clear = function() {

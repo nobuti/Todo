@@ -17,7 +17,10 @@
       Tasks.prototype.url = '/tasks';
 
       Tasks.prototype.initialize = function() {
-        return this.on('reset', this.applyFilter, this);
+        this.on('reset', this.applyFilter, this);
+        this.on('add', this.update, this);
+        this.on('destroy', this.update, this);
+        return Backbone.Mediator.on('update:tasks', this.update, this);
       };
 
       Tasks.prototype.comparator = function(taska, taskb) {
@@ -42,6 +45,7 @@
 
       Tasks.prototype.applyFilter = function() {
         this.filter(this.checkOld, this).forEach(this.removeTask, this);
+        this.update();
         return this.trigger('filter');
       };
 
@@ -53,7 +57,16 @@
       };
 
       Tasks.prototype.removeTask = function(model) {
-        return model.destroy();
+        model.destroy();
+        return this.update();
+      };
+
+      Tasks.prototype.update = function() {
+        var cuantos;
+        cuantos = this.filter(function(model) {
+          return model.get('complete') === false;
+        }).length;
+        return Backbone.Mediator.trigger('update:counter', cuantos);
       };
 
       return Tasks;

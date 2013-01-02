@@ -12,8 +12,7 @@
           el: '.add'
         });
         this.counter = new CounterView({
-          el: '.counter',
-          collection: this.todo
+          el: '.counter'
         });
         this.list = new ListView({
           el: 'ul.todo',

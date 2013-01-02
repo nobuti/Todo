@@ -22,8 +22,15 @@ define ['backbone', 'underscore', 'text!templates/taskTemplate.html','moment'], 
     
     clickHandler: ->
       valor = this.model.get('complete')
-      this.model.save({complete: !valor})
+      this.model.save(
+        { complete: !valor },
+        { success: _.bind(this.update, this) }
+      )
     
+    update: (model, response, options)->
+      console.log "update"
+      Backbone.Mediator.trigger 'update:tasks'
+
     dblclickHandler: ->
       Backbone.Mediator.trigger 'dblclick', this
     
@@ -31,7 +38,6 @@ define ['backbone', 'underscore', 'text!templates/taskTemplate.html','moment'], 
       this.undelegateEvents()
       this.model.destroy()
       this.remove()
-      Backbone.Mediator.trigger 'update:counter'
 
     clear: ->
       this.undelegateEvents()

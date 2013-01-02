@@ -6,6 +6,9 @@ define ['backbone.localStorage', 'moment', 'models/task'], (Backbone, moment, Ta
 
     initialize: ->
       this.on 'reset', this.applyFilter, this
+      this.on 'add', this.update, this
+      this.on 'destroy', this.update, this
+      Backbone.Mediator.on 'update:tasks', this.update, this
 
     comparator: (taska, taskb) ->
       moment(taska.get('date')) < moment(taskb.get('date'))
@@ -25,6 +28,7 @@ define ['backbone.localStorage', 'moment', 'models/task'], (Backbone, moment, Ta
 
     applyFilter: ->
       this.filter(this.checkOld, this).forEach(this.removeTask, this)
+      this.update()
       this.trigger 'filter'
 
     checkOld: (model)->
@@ -34,3 +38,9 @@ define ['backbone.localStorage', 'moment', 'models/task'], (Backbone, moment, Ta
 
     removeTask: (model)->
       model.destroy()
+      this.update()
+
+    update: ->
+      cuantos = this.filter((model)->
+        model.get('complete') == false).length
+      Backbone.Mediator.trigger 'update:counter', cuantos
