@@ -40,7 +40,7 @@ require.config({
   }
 });
 
-require(['mocha', 'chai','sinon'], function(mocha, chai, sinon) {
+require(['mocha', 'chai','sinon','mediator'], function(mocha, chai, sinon, Mediator) {
 
   // Chai
   this.expect = chai.expect;
@@ -52,7 +52,11 @@ require(['mocha', 'chai','sinon'], function(mocha, chai, sinon) {
 
   specs.push('specs/task_spec');
   specs.push('specs/tasks_spec');
-  // specs.push('spec/views/ClearCompletedSpec');
+  specs.push('specs/button_spec');
+  specs.push('specs/counter_spec');
+  specs.push('specs/input_spec');
+  specs.push('specs/taskview_spec');
+  specs.push('specs/list_spec');
   // specs.push('spec/views/CountViewSpec');
   // specs.push('spec/views/FooterViewSpec');
   // specs.push('spec/views/MarkAllSpec');

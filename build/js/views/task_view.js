@@ -59,7 +59,7 @@
       };
 
       TaskView.prototype.update = function(model, response, options) {
-        console.log("update");
+        console.log(response);
         return Backbone.Mediator.trigger('update:tasks');
       };
 

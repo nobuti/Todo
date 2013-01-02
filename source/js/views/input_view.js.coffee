@@ -31,6 +31,6 @@ define ['backbone'], (Backbone)->
 
     edit: (task)-> 
       this.edition = true
-      this.task = task
-      this.pinput.val(this.task.model.get('label'))
+      this.task = task || {}
+      this.pinput.val(this.task.model?.get('label') || '')
       this.show()

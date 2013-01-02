@@ -28,7 +28,7 @@ define ['backbone', 'underscore', 'text!templates/taskTemplate.html','moment'], 
       )
     
     update: (model, response, options)->
-      console.log "update"
+      console.log response
       Backbone.Mediator.trigger 'update:tasks'
 
     dblclickHandler: ->

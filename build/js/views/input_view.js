@@ -52,9 +52,10 @@
       };
 
       InputView.prototype.edit = function(task) {
+        var _ref;
         this.edition = true;
-        this.task = task;
-        this.pinput.val(this.task.model.get('label'));
+        this.task = task || {};
+        this.pinput.val(((_ref = this.task.model) != null ? _ref.get('label') : void 0) || '');
         return this.show();
       };
 

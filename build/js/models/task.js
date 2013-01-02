@@ -12,9 +12,12 @@
         return Task.__super__.constructor.apply(this, arguments);
       }
 
+      Task.prototype.urlRoot = '/task';
+
       Task.prototype.defaults = {
         complete: false,
-        important: false
+        important: false,
+        date: new Date()
       };
 
       Task.prototype.validate = function(attrs) {
