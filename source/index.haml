@@ -1,14 +1,32 @@
-%header
-  %h1 Doit
-  .counter
-  .add +
+.wrapper
+  %header
+    %h1 Doit
+    .counter
+    .add +
 
-.content  
-  %h2 Don't be lazy and do it!.
-  .form-holder
-    %label{:for => "task"}
-      Task
-    %input{:type => "text", :name => "task"}  
-  %ul.todo
-    
-/= render_partial 'footer'
+  .content  
+    %h2 Don't be lazy and do it!.
+    .form-holder
+      %label{:for => "task"}
+        Task
+      %input{:type => "text", :name => "task"}  
+    %ul.todo
+
+  .instructions.hidden
+    .arrow
+    %ul
+      %li 
+        Click on number to 
+        %em add a task
+      %li 
+        Preppend «!» to the task to 
+        %em mark it as important
+      %li 
+        Double click on task to 
+        %em edit
+      %li 
+        Empty input after double click to 
+        %em delete 
+        that task
+
+= render_partial 'footer'

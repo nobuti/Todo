@@ -121,6 +121,12 @@ body:before, body:after {
 body:after {
   clear: both; }
 
+html, body {
+  height: 100%; }
+
+.wrapper {
+  min-height: 100%; }
+
 header {
   width: 100%;
   height: 100px;
@@ -156,7 +162,6 @@ header .counter, header .add {
   height: 60px; }
 
 .content {
-  height: 100%;
   display: block;
   width: 360px;
   margin: 0 -10px;
@@ -202,12 +207,31 @@ header .counter, header .add {
   left: 240px;
   z-index: 1; }
 
+.instructions {
+  position: absolute;
+  margin: 0;
+  left: 20px;
+  top: 80px; }
+.instructions .arrow {
+  position: absolute;
+  width: 20px;
+  height: 15px;
+  top: -15px;
+  left: 40px; }
+.instructions .arrow:after {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 10px;
+  left: 5px; }
+
 footer {
   display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%; }
+  position: relative;
+  top: -60px; }
+
+em {
+  background-color: #FAFFA6; }
 
 /* States
 ================================================== */
@@ -227,7 +251,6 @@ h2 {
 
 footer {
   text-align: center;
-  padding: 10px 0;
   font-size: 0.75em; }
 
 header {
@@ -240,7 +263,8 @@ header h1 {
   font-family: 'casper_bold_italicregular', Helvetica, sans-serif;
   padding: 0;
   margin: 0;
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  cursor: pointer; }
 header .counter, header .add {
   line-height: 50px;
   text-align: center;
@@ -326,3 +350,47 @@ header .add:hover {
   -moz-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
+
+.instructions {
+  cursor: default;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  opacity: 1; }
+.instructions .arrow {
+  overflow: hidden; }
+.instructions .arrow:after {
+  content: "";
+  background-color: #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333; }
+.instructions ul {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  font-size: 12px;
+  font-style: italic; }
+
+.instructions.hidden {
+  top: 120px;
+  opacity: 0; }

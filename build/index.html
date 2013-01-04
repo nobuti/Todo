@@ -10,21 +10,47 @@
     <script data-main='js/app.js' src='js/components/requirejs/require.js'></script>
   </head>
   <body>
-    <header>
-      <h1>Doit</h1>
-      <div class='counter'></div>
-      <div class='add'>+</div>
-    </header>
-    <div class='content'>
-      <h2>Don't be lazy and do it!.</h2>
-      <div class='form-holder'>
-        <label for='task'>
-          Task
-        </label>
-        <input name='task' type='text' />
-      </div>
-      <ul class='todo'></ul>
+    <div class='wrapper'>
+  <header>
+    <h1>Doit</h1>
+    <div class='counter'></div>
+    <div class='add'>+</div>
+  </header>
+  <div class='content'>
+    <h2>Don't be lazy and do it!.</h2>
+    <div class='form-holder'>
+      <label for='task'>
+        Task
+      </label>
+      <input name='task' type='text' />
     </div>
-    <!-- = render_partial 'footer' -->
+    <ul class='todo'></ul>
+  </div>
+  <div class='instructions hidden'>
+    <div class='arrow'></div>
+    <ul>
+      <li>
+        Click on number to
+        <em>add a task</em>
+      </li>
+      <li>
+        Preppend «!» to the task to
+        <em>mark it as important</em>
+      </li>
+      <li>
+        Double click on task to
+        <em>edit</em>
+      </li>
+      <li>
+        Empty input after double click to
+        <em>delete</em>
+        that task
+      </li>
+    </ul>
+  </div>
+</div>
+<footer>
+  <a href='https://github.com/nobuti/Todo'>Fork me in github</a>
+</footer>
   </body>
 </html>

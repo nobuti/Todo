@@ -1,6 +1,6 @@
 (function() {
 
-  define(['underscore', 'backbone', 'models/task', 'collections/tasks', 'views/input_view', 'views/list_view', 'views/add_button_view', 'views/counter_view'], function(_, Backbone, Task, Tasks, InputView, ListView, AddButtonView, CounterView) {
+  define(['underscore', 'backbone', 'models/task', 'collections/tasks', 'views/logo_view', 'views/input_view', 'views/list_view', 'views/add_button_view', 'views/counter_view'], function(_, Backbone, Task, Tasks, LogoView, InputView, ListView, AddButtonView, CounterView) {
     var App;
     return App = (function() {
 
@@ -8,6 +8,10 @@
 
       App.prototype.init = function() {
         this.todo = new Tasks();
+        this.logo = new LogoView({
+          el: 'h1',
+          tooltip: $('.instructions')
+        });
         this.button = new AddButtonView({
           el: '.add'
         });

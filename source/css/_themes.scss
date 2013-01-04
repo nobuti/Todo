@@ -14,7 +14,6 @@ h2 {
 }
 footer {
   text-align: center;
-  padding: 10px 0;
   font-size: 0.75em;
 }
 header {
@@ -27,6 +26,7 @@ header {
     @include bold;
     @include reset;
     font-size: 1.5em;
+    cursor: pointer;
   }
   .counter, .add {
     line-height: 50px;
@@ -105,6 +105,7 @@ header {
       color: lighten($base-text-color, 50%);
     }
   }
+  
   .action {
     text-align: center;
     font-size: 0.75em;
@@ -115,4 +116,35 @@ header {
     line-height: 30px;
     @include transition-property(left);
     @include transition-duration(0.3s);
+  }
+  .instructions {
+    cursor: default;
+    background-color: #fff;
+    @include single-box-shadow;
+    @include border-radius(5px);
+    @include transition-property(all);
+    @include transition-duration(0.5s);
+    opacity: 1;
+    .arrow {
+      overflow: hidden;
+      &:after {
+        content: "";
+        background-color: #fff;  
+        @include rotate(45deg);
+        @include single-box-shadow;
+      }
+    }
+    ul {
+      list-style: none;
+      padding: 10px;
+      margin: 0;
+      font-size: $base-font-size - 4;
+      font-style: italic;
+    }
+  }
+  .instructions {
+    &.hidden {
+      top: 120px;
+      opacity: 0;
+    }
   }
