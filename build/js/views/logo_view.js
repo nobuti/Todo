@@ -14,7 +14,8 @@
 
       LogoView.prototype.initialize = function(options) {
         this.tooltip = options.tooltip;
-        return this.showing = false;
+        this.showing = false;
+        return Backbone.Mediator.on('init', this.clickHandler, this);
       };
 
       LogoView.prototype.events = {

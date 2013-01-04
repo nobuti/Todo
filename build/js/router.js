@@ -7,6 +7,7 @@
       function App() {}
 
       App.prototype.init = function() {
+        var _this = this;
         this.todo = new Tasks();
         this.logo = new LogoView({
           el: 'h1',
@@ -26,7 +27,10 @@
           el: '.form-holder',
           collection: this.todo
         });
-        return this.todo.fetch();
+        this.todo.fetch();
+        return setTimeout(function() {
+          return Backbone.Mediator.trigger('init');
+        }, 2000);
       };
 
       return App;

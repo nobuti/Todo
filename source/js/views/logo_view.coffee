@@ -3,6 +3,7 @@ define ['backbone'], (Backbone)->
     initialize: (options)->
       this.tooltip = options.tooltip
       this.showing = false
+      Backbone.Mediator.on 'init', this.clickHandler, this
 
     events: 
       'click': 'clickHandler'

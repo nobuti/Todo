@@ -28,3 +28,8 @@ define ['underscore', 'backbone', 'models/task', 'collections/tasks', 'views/log
       })
       
       this.todo.fetch()
+
+      setTimeout(
+        => 
+          Backbone.Mediator.trigger 'init'
+        ,2000)
