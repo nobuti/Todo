@@ -25,14 +25,22 @@
       };
 
       InputView.prototype.enterHandler = function(e) {
-        var value;
+        var attrs, value;
         value = this.pinput.val();
         if (this.edition) {
-          if (e.keyCode === 13 && $.trim(value) === '') {
-            this.task.destroy();
+          if (e.keyCode === 13) {
+            if ($.trim(value) !== '') {
+              attrs = {
+                important: value.substr(0, 1) === '!',
+                label: value.substr(1)
+              };
+              this.task.model.save(attrs);
+            } else {
+              this.task.destroy();
+            }
+            this.edition = false;
+            return this.hide();
           }
-          this.edition = false;
-          return this.hide();
         } else {
           if (e.keyCode === 13 && $.trim(value) !== '') {
             this.collection.newTask(value);
