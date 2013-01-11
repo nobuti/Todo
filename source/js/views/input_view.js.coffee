@@ -13,9 +13,16 @@ define ['backbone'], (Backbone)->
     enterHandler: (e)->
       value = this.pinput.val()
       if (this.edition)
-        this.task.destroy() if (e.keyCode == 13 and $.trim(value) == '') 
-        this.edition = false
-        this.hide()
+        if (e.keyCode == 13)
+          if ($.trim(value) != '') 
+            attrs = 
+              important: value.substr(0,1) == '!' 
+              label: value.substr(1)
+            this.task.model.save(attrs)
+          else 
+            this.task.destroy()
+          this.edition = false
+          this.hide()
       else
         if (e.keyCode == 13 and $.trim(value) != '') 
           this.collection.newTask(value)
