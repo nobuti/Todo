@@ -25,16 +25,18 @@
       };
 
       InputView.prototype.enterHandler = function(e) {
-        var attrs, value;
+        var attrs, important, label, value;
         value = this.pinput.val();
         if (this.edition) {
           if (e.keyCode === 13) {
             if ($.trim(value) !== '') {
+              important = $.trim(value).substr(0, 1) === '!';
+              label = important ? value.substr(1) : value;
               attrs = {
-                important: value.substr(0, 1) === '!',
-                label: value.substr(1)
+                important: important,
+                label: label
               };
-              this.task.model.save(attrs);
+              this.task.save(attrs);
             } else {
               this.task.destroy();
             }

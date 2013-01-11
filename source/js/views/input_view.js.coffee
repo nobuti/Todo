@@ -15,10 +15,12 @@ define ['backbone'], (Backbone)->
       if (this.edition)
         if (e.keyCode == 13)
           if ($.trim(value) != '') 
+            important = $.trim(value).substr(0,1) == '!' 
+            label = if important then value.substr(1) else value
             attrs = 
-              important: value.substr(0,1) == '!' 
-              label: value.substr(1)
-            this.task.model.save(attrs)
+              important: important
+              label: label
+            this.task.save(attrs)
           else 
             this.task.destroy()
           this.edition = false

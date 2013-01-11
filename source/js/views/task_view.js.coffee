@@ -33,7 +33,12 @@ define ['backbone', 'underscore', 'text!templates/taskTemplate.html','moment'], 
 
     dblclickHandler: ->
       Backbone.Mediator.trigger 'dblclick', this
-    
+    save: (attrs)->
+      this.model.save(attrs)
+      if attrs.important
+        this.$el.addClass('important')
+      else
+        this.$el.removeClass('important')
     destroy: ->
       this.undelegateEvents()
       this.model.destroy()

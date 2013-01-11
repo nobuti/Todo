@@ -67,6 +67,15 @@
         return Backbone.Mediator.trigger('dblclick', this);
       };
 
+      TaskView.prototype.save = function(attrs) {
+        this.model.save(attrs);
+        if (attrs.important) {
+          return this.$el.addClass('important');
+        } else {
+          return this.$el.removeClass('important');
+        }
+      };
+
       TaskView.prototype.destroy = function() {
         this.undelegateEvents();
         this.model.destroy();
